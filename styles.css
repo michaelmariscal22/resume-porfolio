@@ -81,6 +81,19 @@
   --shadow-md:0 4px 12px rgba(0,0,0,.4), 0 2px 4px rgba(0,0,0,.3)
 }
 
+/* Dark mode skill category color variations */
+:root[data-theme="dark"] .skill-category:nth-of-type(1) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 85%, #3b82f6 15%); }
+:root[data-theme="dark"] .skill-category:nth-of-type(2) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 85%, #10b981 15%); }
+:root[data-theme="dark"] .skill-category:nth-of-type(3) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 85%, #f59e0b 15%); }
+:root[data-theme="dark"] .skill-category:nth-of-type(4) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 85%, #8b5cf6 15%); }
+:root[data-theme="dark"] .skill-category:nth-of-type(5) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 85%, #ec4899 15%); }
+
+:root[data-theme="dark"] .skill-category:nth-of-type(1) .skill-tags li:not(.primary):hover{ border-color:#60a5fa; }
+:root[data-theme="dark"] .skill-category:nth-of-type(2) .skill-tags li:not(.primary):hover{ border-color:#34d399; }
+:root[data-theme="dark"] .skill-category:nth-of-type(3) .skill-tags li:not(.primary):hover{ border-color:#fbbf24; }
+:root[data-theme="dark"] .skill-category:nth-of-type(4) .skill-tags li:not(.primary):hover{ border-color:#a78bfa; }
+:root[data-theme="dark"] .skill-category:nth-of-type(5) .skill-tags li:not(.primary):hover{ border-color:#f472b6; }
+
 /* --- Reset & Base --- */
 html{
   scroll-behavior:smooth;
@@ -417,7 +430,13 @@ header.top{
   }
 
   .skill-tags{
-    gap:.4rem
+    padding-left:1.25rem
+  }
+
+  .skill-tags li{
+    margin-right:.5rem;
+    padding:.25rem .6rem;
+    font-size:.8rem
   }
 
   .tags li{
@@ -874,17 +893,19 @@ details>ul li{
   background:var(--surface);
   border:1px solid var(--line);
   border-radius:var(--radius-sm);
-  padding:.3rem .75rem;
+  padding:.35rem .85rem;
   font-size:.85rem;
   font-weight:500;
   color:var(--text);
-  transition:border-color var(--transition),background var(--transition),transform var(--transition)
+  transition:background var(--transition),border-color var(--transition),color var(--transition),transform var(--transition),box-shadow var(--transition);
+  cursor:default
 }
 
 .skill-tags li:hover{
+  background:var(--surface-elevated);
   border-color:var(--accent);
-  transform:translateY(-1px);
-  box-shadow:var(--shadow)
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md)
 }
 
 .skill-tags li.primary{
@@ -896,8 +917,23 @@ details>ul li{
 .skill-tags li.primary:hover{
   background:var(--accent-hover);
   border-color:var(--accent-hover);
-  color:var(--bg)
+  color:var(--bg);
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-md)
 }
+
+/* Subtle category-based background variations */
+.skill-category:nth-of-type(1) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 90%, #3b82f6 10%); }
+.skill-category:nth-of-type(2) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 90%, #10b981 10%); }
+.skill-category:nth-of-type(3) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 90%, #f59e0b 10%); }
+.skill-category:nth-of-type(4) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 90%, #8b5cf6 10%); }
+.skill-category:nth-of-type(5) .skill-tags li:not(.primary){ background:color-mix(in srgb, var(--surface) 90%, #ec4899 10%); }
+
+.skill-category:nth-of-type(1) .skill-tags li:not(.primary):hover{ border-color:#3b82f6; }
+.skill-category:nth-of-type(2) .skill-tags li:not(.primary):hover{ border-color:#10b981; }
+.skill-category:nth-of-type(3) .skill-tags li:not(.primary):hover{ border-color:#f59e0b; }
+.skill-category:nth-of-type(4) .skill-tags li:not(.primary):hover{ border-color:#8b5cf6; }
+.skill-category:nth-of-type(5) .skill-tags li:not(.primary):hover{ border-color:#ec4899; }
 
 /* --- Projects Grid --- */
 .projects-grid{
@@ -1186,29 +1222,6 @@ footer{
     flex-direction:column;
     text-align:center;
     gap:.75rem
-  }
-}
-
-@media (max-width:30rem){
-  .meta{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:.35rem
-  }
-
-  .education-details{
-    flex-direction:column;
-    gap:.25rem
-  }
-
-  .skill-tags{
-    padding-left:1.25rem
-  }
-
-  .skill-tags li{
-    margin-right:.5rem;
-    padding:.25rem .6rem;
-    font-size:.8rem
   }
 }
 
