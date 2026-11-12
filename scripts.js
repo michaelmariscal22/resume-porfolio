@@ -46,6 +46,47 @@
   initTheme();
 
   // ========================================
+  // Mobile Navigation Toggle
+  // ========================================
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
+
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !isOpen);
+      mainNav.classList.toggle('is-open');
+    });
+
+    // Close nav when clicking a link (mobile)
+    mainNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          navToggle.setAttribute('aria-expanded', 'false');
+          mainNav.classList.remove('is-open');
+        }
+      });
+    });
+
+    // Close nav on escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mainNav.classList.contains('is-open')) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        mainNav.classList.remove('is-open');
+        navToggle.focus();
+      }
+    });
+
+    // Close nav on resize to desktop
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768 && mainNav.classList.contains('is-open')) {
+        navToggle.setAttribute('aria-expanded', 'false');
+        mainNav.classList.remove('is-open');
+      }
+    });
+  }
+
+  // ========================================
   // Current Year in Footer
   // ========================================
   var yearEl = document.getElementById('year');
